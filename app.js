@@ -28,9 +28,10 @@ const resetGame = () => {
     msgContainer.classList.add("hide")
 };
 
-
+let x = 0;
 boxes.forEach((box) => {
     box.addEventListener("click",() => {
+        x++;
         if(turnO){
             box.innerText = "O";
             turnO = false;
@@ -81,8 +82,18 @@ const checkWinner = () => {
             if(pos1val === pos2val && pos2val === pos3val){
                 console.log("Winner", pos1val);
                 showWinner(pos1val);
+                break;
+            }
+            else{
+                if(x === 9){
+    
+                    msg.innerText = "Ohno!!! It's a Draw match";
+                    msgContainer.classList.remove("hide");
+                    x = 0;
+                }
             }
         }
+        
     }
 };
 
